@@ -1,11 +1,11 @@
 ---
-import "../../styles/global.css";
+import '../../styles/global.css';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob("../../content/posts/*.mdx");
+  const posts = await Astro.glob('../../content/posts/*.mdx');
   return posts.map((post) => ({
     params: { 
-      slug: post.file.split("/").pop()?.replace(".mdx", "") 
+      slug: post.file.split('/').pop()?.replace('.mdx', '') 
     },
     props: { post },
   }));
@@ -23,39 +23,39 @@ const { post } = Astro.props;
     <title>{post.frontmatter.title} - ruxuc</title>
   </head>
   <body>
-    <div class="container mx-auto max-w-4xl px-6 py-8">
-      <header class="mb-8">
-        <nav class="mb-6">
-          <a href="/" class="text-neon-blue hover:text-neon-cyan text-sm">
-            ← back to terminal
-          </a>
-        </nav>
-        
-        <div class="border border-neon-green/30 p-6 rounded-lg bg-gray-900/50">
-          <h1 class="text-2xl mb-2 text-neon-cyan">
+    <div class="max-w-2xl mx-auto px-6 py-12">
+      <nav class="mb-8">
+        <a href="/" class="text-blue-600 hover:text-blue-800 text-sm transition-colors">
+          ← back to posts
+        </a>
+      </nav>
+      
+      <article>
+        <header class="mb-8">
+          <h1 class="text-3xl font-light text-gray-900 mb-3">
             {post.frontmatter.title}
           </h1>
-          <div class="flex items-center gap-4 text-sm text-neon-green/60">
+          <div class="flex items-center gap-4 text-sm text-gray-500">
             <time class="font-mono">
-              {new Date(post.frontmatter.created_at).toISOString().split("T")[0]}
+              {new Date(post.frontmatter.created_at).toISOString().split('T')[0]}
             </time>
             {post.frontmatter.description && (
               <span>• {post.frontmatter.description}</span>
             )}
           </div>
-        </div>
-      </header>
+        </header>
 
-      <main class="prose prose-invert max-w-none">
-        <div class="border border-neon-green/30 p-6 rounded-lg bg-gray-900/20">
+        <div class="prose">
           <post.Content />
         </div>
-      </main>
+      </article>
 
-      <footer class="mt-16 pt-8 border-t border-neon-green/30">
-        <p class="text-center text-sm text-neon-green/60">
-          <span class="terminal-prompt">$</span> echo "end of file"
-        </p>
+      <footer class="mt-16 pt-8 border-t border-gray-100">
+        <div class="text-center">
+          <a href="/" class="text-blue-600 hover:text-blue-800 text-sm transition-colors">
+            ← back to posts
+          </a>
+        </div>
       </footer>
     </div>
   </body>

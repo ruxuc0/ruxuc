@@ -1,51 +1,51 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply border-neon-green/20;
-  }
-  
   body {
-    @apply bg-black text-neon-green font-mono leading-relaxed;
-    font-size: 14px;
+    @apply bg-white text-gray-900 font-normal leading-relaxed;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-neon-cyan font-bold;
+  h1 {
+    @apply text-2xl font-semibold text-gray-900 mb-6;
+  }
+  
+  h2 {
+    @apply text-xl font-medium text-gray-800 mb-4;
+  }
+  
+  h3 {
+    @apply text-lg font-medium text-gray-800 mb-3;
+  }
+  
+  p {
+    @apply mb-4 text-gray-700 leading-relaxed;
   }
   
   a {
-    @apply text-neon-blue hover:text-neon-cyan transition-colors underline;
+    @apply text-blue-600 hover:text-blue-800 transition-colors underline-offset-2;
   }
   
   code {
-    @apply bg-gray-900 text-neon-purple px-1 py-0.5 rounded text-sm;
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono;
   }
   
   pre {
-    @apply bg-gray-900 text-neon-green p-4 rounded-lg overflow-x-auto border border-neon-green/30;
+    @apply bg-gray-50 p-4 rounded-lg overflow-x-auto border text-sm;
   }
   
   pre code {
-    @apply bg-transparent text-neon-green px-0 py-0;
+    @apply bg-transparent px-0 py-0;
   }
 }
 
 @layer components {
-  .terminal-prompt {
-    @apply text-neon-cyan;
+  .prose {
+    @apply max-w-none;
   }
-  
-  .terminal-cursor {
-    animation: blink 1s infinite;
-  }
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
 }

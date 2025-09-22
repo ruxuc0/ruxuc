@@ -1,7 +1,7 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css';
 
-const posts = await Astro.glob("../content/posts/*.mdx");
+const posts = await Astro.glob('../content/posts/*.mdx');
 const sortedPosts = posts.sort((a, b) => 
   new Date(b.frontmatter.created_at).getTime() - new Date(a.frontmatter.created_at).getTime()
 );
@@ -16,54 +16,40 @@ const sortedPosts = posts.sort((a, b) =>
     <title>ruxuc</title>
   </head>
   <body>
-    <div class="container mx-auto max-w-4xl px-6 py-8">
-      <header class="mb-8">
-        <div class="border border-neon-green/30 p-6 rounded-lg bg-gray-900/50">
-          <h1 class="text-3xl mb-4">
-            <span class="terminal-prompt">ruxuc@ruxuc:~$</span> 
-            <span class="text-neon-green">whoami</span>
-            <span class="terminal-cursor">_</span>
-          </h1>
-          <p class="text-sm text-neon-green/60">
-            [STATUS: ACTIVE] | [UPTIME: INDEFINITE] | [ACCESS: PUBLIC]
-          </p>
-        </div>
+    <div class="max-w-2xl mx-auto px-6 py-12">
+      <header class="mb-12">
+        <h1 class="text-3xl font-light text-gray-900 mb-2">ruxuc</h1>
+        <p class="text-gray-600 text-lg">lost in the grid.</p>
       </header>
 
       <main>
-        <section class="mb-8">
-          <h2 class="text-xl mb-4 text-neon-cyan">
-            <span class="terminal-prompt">$</span> ls -la posts/
-          </h2>
-          
-          <div class="space-y-4">
-            {sortedPosts.map((post) => (
-              <article class="border border-neon-green/30 p-4 rounded bg-gray-900/30 hover:bg-gray-900/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <h3 class="text-lg">
-                    <a href={"/posts/" + post.file.split("/").pop()?.replace(".mdx", "")} 
-                       class="text-neon-blue hover:text-neon-cyan no-underline">
-                      {post.frontmatter.title}
-                    </a>
-                  </h3>
-                  <time class="text-sm text-neon-green/60 font-mono">
-                    {new Date(post.frontmatter.created_at).toISOString().split("T")[0]}
-                  </time>
-                </div>
-                {post.frontmatter.description && (
-                  <p class="text-sm text-neon-green/80">
-                    {post.frontmatter.description}
-                  </p>
-                )}
-              </article>
-            ))}
-          </div>
+        <section class="space-y-8">
+          {sortedPosts.map((post) => (
+            <article class="border-b border-gray-100 pb-8 last:border-b-0">
+              <div class="flex items-baseline justify-between mb-3">
+                <h2 class="text-xl font-medium">
+                  <a href={"/posts/" + post.file.split("/").pop()?.replace(".mdx", "")} 
+                     class="text-gray-900 hover:text-blue-600 no-underline transition-colors">
+                    {post.frontmatter.title}
+                  </a>
+                </h2>
+                <time class="text-sm text-gray-500 font-mono">
+                  {new Date(post.frontmatter.created_at).toISOString().split("T")[0]}
+                </time>
+              </div>
+              {post.frontmatter.description && (
+                <p class="text-gray-600 mb-0">
+                  {post.frontmatter.description}
+                </p>
+              )}
+            </article>
+          ))}
         </section>
       </main>
 
-      <footer class="mt-16 pt-8 border-t border-neon-green/30">
-        <p class="text-center text-sm text-neon-green/60">
-          <span class="terminal-prompt">$</span> echo "end of transmission"
+      <footer class="mt-16 pt-8 border-t border-gray-100">
+        <p class="text-center text-sm text-gray-500">
+          © 2025 ruxuc
         </p>
       </footer>
     </div>
