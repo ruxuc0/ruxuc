@@ -1,0 +1,90 @@
+---
+title: "project showcase template"
+created_at: 2025-09-22
+description: "template for showing off a project or build"
+tags: ["project", "showcase", "template"]
+---
+
+import InfoBox from "../../components/InfoBox.astro";
+
+# project name
+
+brief one-line description of what the project does.
+
+## overview
+
+<InfoBox type="info" title="project status">
+**status**: completed / in progress / on hold  
+**timeline**: 2 weeks  
+**tech stack**: astro, react, tailwind, etc.  
+</InfoBox>
+
+### the problem
+
+describe the problem you were trying to solve:
+
+- what was the pain point?
+- why did existing solutions not work?
+- what was the goal?
+
+### the solution
+
+explain your approach:
+
+- high-level architecture decisions
+- key technologies chosen and why
+- any interesting challenges overcome
+
+## technical details
+
+### key features
+
+- **feature 1**: description of what it does
+- **feature 2**: another key capability  
+- **feature 3**: something unique or clever
+
+### code highlights
+
+most interesting piece of code or algorithm:
+
+```typescript
+function smartAlgorithm(data: DataType[]): ProcessedResult {
+  const processed = data
+    .filter(item => item.isValid)
+    .map(item => transform(item))
+    .reduce(optimize, initialValue);
+    
+  return { result: processed, metadata: getMetrics() };
+}
+```
+
+## lessons learned
+
+### what went well
+
+- list things that worked great
+- good decisions made early
+- tools/libraries that were helpful
+
+### what i would do differently
+
+- things that could be improved
+- different approaches to try
+- technical debt created
+
+## results and impact
+
+### demo
+
+**live demo**: [link to deployed version](https://example.com)  
+**source code**: [github repository](https://github.com/user/repo)  
+
+<InfoBox type="success" title="outcome">
+summarize the final result and whether it achieved the original goals.
+</InfoBox>
+
+## future plans
+
+- potential enhancements
+- features to add next
+- how others can contribute
