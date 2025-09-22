@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-neon-green/20;
+  }
+  
+  body {
+    @apply bg-black text-neon-green font-mono leading-relaxed;
+    font-size: 14px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-neon-cyan font-bold;
+  }
+  
+  a {
+    @apply text-neon-blue hover:text-neon-cyan transition-colors underline;
+  }
+  
+  code {
+    @apply bg-gray-900 text-neon-purple px-1 py-0.5 rounded text-sm;
+  }
+  
+  pre {
+    @apply bg-gray-900 text-neon-green p-4 rounded-lg overflow-x-auto border border-neon-green/30;
+  }
+  
+  pre code {
+    @apply bg-transparent text-neon-green px-0 py-0;
+  }
+}
+
+@layer components {
+  .terminal-prompt {
+    @apply text-neon-cyan;
+  }
+  
+  .terminal-cursor {
+    animation: blink 1s infinite;
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}

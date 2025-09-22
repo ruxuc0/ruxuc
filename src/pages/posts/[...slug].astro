@@ -1,0 +1,62 @@
+---
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../content/posts/*.mdx");
+  return posts.map((post) => ({
+    params: { 
+      slug: post.file.split("/").pop()?.replace(".mdx", "") 
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.frontmatter.title} - ruxuc</title>
+  </head>
+  <body>
+    <div class="container mx-auto max-w-4xl px-6 py-8">
+      <header class="mb-8">
+        <nav class="mb-6">
+          <a href="/" class="text-neon-blue hover:text-neon-cyan text-sm">
+            ← back to terminal
+          </a>
+        </nav>
+        
+        <div class="border border-neon-green/30 p-6 rounded-lg bg-gray-900/50">
+          <h1 class="text-2xl mb-2 text-neon-cyan">
+            {post.frontmatter.title}
+          </h1>
+          <div class="flex items-center gap-4 text-sm text-neon-green/60">
+            <time class="font-mono">
+              {new Date(post.frontmatter.created_at).toISOString().split("T")[0]}
+            </time>
+            {post.frontmatter.description && (
+              <span>• {post.frontmatter.description}</span>
+            )}
+          </div>
+        </div>
+      </header>
+
+      <main class="prose prose-invert max-w-none">
+        <div class="border border-neon-green/30 p-6 rounded-lg bg-gray-900/20">
+          <post.Content />
+        </div>
+      </main>
+
+      <footer class="mt-16 pt-8 border-t border-neon-green/30">
+        <p class="text-center text-sm text-neon-green/60">
+          <span class="terminal-prompt">$</span> echo "end of file"
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
