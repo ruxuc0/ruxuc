@@ -1,0 +1,179 @@
+---
+title: "interactive graphs and visualizations"
+created_at: 2025-09-22
+description: "advanced mdx with react components, charts, and interactive elements"
+---
+
+import LineChart from "../../components/LineChart.tsx";
+import BarChart from "../../components/BarChart.tsx";
+import Counter from "../../components/Counter.tsx";
+import DataVisualizer from "../../components/DataVisualizer.tsx";
+
+## interactive components
+
+mdx allows you to embed fully interactive react components. here are some examples:
+
+### counters
+
+basic interactive counter:
+
+<Counter client:load />
+
+counter with custom settings:
+
+<Counter client:load initialValue={10} step={5} label="custom counter" />
+
+### data visualization
+
+this svg-based visualizer lets you add points, generate waves, and animate:
+
+<DataVisualizer client:load title="click the buttons to interact" />
+
+## chart.js integration
+
+using chart.js with react-chartjs-2 for professional charts:
+
+### line charts
+
+<LineChart
+  client:load
+  title="website traffic over time"
+  data={{
+    labels: ["jan", "feb", "mar", "apr", "may", "jun"],
+    datasets: [
+      {
+        label: "visitors",
+        data: [1200, 1900, 3000, 5000, 4200, 6300],
+        borderColor: "rgb(59, 130, 246)",
+        backgroundColor: "rgba(59, 130, 246, 0.2)",
+      },
+      {
+        label: "page views",
+        data: [2400, 3800, 6000, 10000, 8400, 12600],
+        borderColor: "rgb(16, 185, 129)",
+        backgroundColor: "rgba(16, 185, 129, 0.2)",
+      },
+    ],
+  }}
+/>
+
+### performance comparison
+
+<BarChart
+  client:load
+  title="framework performance benchmark"
+  data={{
+    labels: ["astro", "next.js", "nuxt", "gatsby", "svelte"],
+    datasets: [
+      {
+        label: "lighthouse score",
+        data: [98, 87, 89, 91, 95],
+        backgroundColor: "rgba(99, 102, 241, 0.6)",
+        borderColor: "rgba(99, 102, 241, 1)",
+        borderWidth: 1,
+      },
+    ],
+  }}
+/>
+
+### build time analysis
+
+<LineChart
+  client:load
+  title="build time vs project size"
+  data={{
+    labels: ["10 pages", "50 pages", "100 pages", "500 pages", "1000 pages"],
+    datasets: [
+      {
+        label: "astro (seconds)",
+        data: [2.3, 8.7, 15.2, 45.8, 89.1],
+        borderColor: "rgb(59, 130, 246)",
+        backgroundColor: "rgba(59, 130, 246, 0.2)",
+      },
+      {
+        label: "other framework (seconds)",
+        data: [5.1, 18.3, 38.7, 127.4, 298.6],
+        borderColor: "rgb(239, 68, 68)",
+        backgroundColor: "rgba(239, 68, 68, 0.2)",
+      },
+    ],
+  }}
+/>
+
+## technical implementation
+
+these interactive components demonstrate several advanced concepts:
+
+### client-side hydration
+
+components use the `client:load` directive to hydrate on the client:
+
+```astro
+<Counter client:load />
+```
+
+other hydration strategies available:
+- `client:idle` - hydrate when browser becomes idle
+- `client:visible` - hydrate when component becomes visible
+- `client:media={QUERY}` - hydrate when media query matches
+
+### typescript integration
+
+all components are written in typescript with proper interfaces:
+
+```typescript
+interface CounterProps {
+  initialValue?: number;
+  step?: number;
+  label?: string;
+}
+```
+
+### state management
+
+react hooks work normally within mdx:
+
+```typescript
+const [count, setCount] = useState(initialValue);
+const [points, setPoints] = useState<DataPoint[]>([]);
+```
+
+### svg and canvas
+
+custom visualizations using svg elements and mathematical functions:
+
+```typescript
+const generateWave = () => {
+  const wavePoints: DataPoint[] = [];
+  for (let i = 0; i < width; i += 5) {
+    wavePoints.push({
+      x: i,
+      y: height / 2 + Math.sin(i * 0.02) * 50,
+    });
+  }
+  setPoints(wavePoints);
+};
+```
+
+## styling integration
+
+components use tailwind classes that match the site design:
+
+- consistent color palette
+- proper spacing and typography
+- hover states and transitions
+- responsive design patterns
+
+## performance considerations
+
+### bundle size
+
+interactive components are only loaded when needed using client directives.
+
+### optimization
+
+- chart.js registers only required components
+- svg elements are lightweight
+- react state updates are batched
+
+this demonstrates how mdx can create rich, interactive documentation and blog posts that go far beyond traditional markdown capabilities.
