@@ -1,0 +1,132 @@
+---
+title: "code blocks and syntax"
+created_at: 2025-09-22
+description: "examples of code blocks with different languages"
+---
+
+## javascript examples
+
+```javascript
+function greet(name) {
+}
+
+const user = "world";
+greet(user);
+
+// arrow functions
+const multiply = (a, b) => a * b;
+
+// async/await
+async function fetchData() {
+  const response = await fetch('/api/data');
+  return response.json();
+}
+```
+
+## python examples
+
+```python
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# list comprehension
+squares = [x**2 for x in range(10)]
+
+# dictionary
+config = {
+    "host": "localhost",
+    "port": 3000,
+    "debug": True
+}
+
+class Calculator:
+    def __init__(self):
+        self.result = 0
+    
+    def add(self, value):
+        self.result += value
+        return self
+```
+
+## css examples
+
+```css
+.modern-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .modern-card {
+    padding: 1rem;
+  }
+}
+```
+
+## bash/shell examples
+
+```bash
+
+# variables
+name="astro"
+version=$(npm list astro --depth=0 | grep astro)
+
+# functions
+deploy() {
+  echo "deploying to production..."
+  npm run build
+  rsync -av dist/ user@server:/var/www/
+}
+
+# conditionals
+if [ $# -eq 0 ]; then
+  echo "no arguments provided"
+  exit 1
+fi
+
+# loops
+for file in *.md; do
+  echo "processing $file"
+  pandoc "$file" -o "output/${file%.md}.html"
+done
+```
+
+## json examples
+
+```json
+{
+  "name": "ruxuc-blog",
+  "version": "1.0.0",
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/mdx": "^4.0.0",
+    "@astrojs/tailwind": "^6.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "config": {
+    "site": "https://ruxuc.pages.dev",
+    "output": "static"
+  }
+}
+```
+
+## inline code examples
+
+use the `pnpm dev` command to start development server.
+
+install packages with `npm install package-name`.
+
+check your node version: `node --version`.

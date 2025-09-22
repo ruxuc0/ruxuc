@@ -1,0 +1,65 @@
+---
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const examples = await Astro.glob('../../content/examples/*.mdx');
+  return examples.map((example) => ({
+    params: { 
+      slug: example.file.split('/').pop()?.replace('.mdx', '') 
+    },
+    props: { example },
+  }));
+}
+
+const { example } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{example.frontmatter.title} - examples - ruxuc</title>
+  </head>
+  <body>
+    <div class="max-w-2xl mx-auto px-6 py-12">
+      <nav class="mb-8">
+        <a href="/examples" class="text-blue-600 hover:text-blue-800 text-sm transition-colors">
+          ← back to examples
+        </a>
+      </nav>
+      
+      <article>
+        <header class="mb-8">
+          <h1 class="text-3xl font-light text-gray-900 mb-3">
+            {example.frontmatter.title}
+          </h1>
+          <div class="flex items-center gap-4 text-sm text-gray-500">
+            <time class="font-mono">
+              {new Date(example.frontmatter.created_at).toISOString().split('T')[0]}
+            </time>
+            {example.frontmatter.description && (
+              <span>• {example.frontmatter.description}</span>
+            )}
+          </div>
+        </header>
+
+        <div class="prose max-w-none">
+          <example.Content />
+        </div>
+      </article>
+
+      <footer class="mt-16 pt-8 border-t border-gray-100">
+        <div class="flex justify-between items-center text-sm">
+          <a href="/examples" class="text-blue-600 hover:text-blue-800 transition-colors">
+            ← back to examples
+          </a>
+          <a href="/" class="text-blue-600 hover:text-blue-800 transition-colors">
+            home
+          </a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

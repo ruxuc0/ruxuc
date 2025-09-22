@@ -1,0 +1,89 @@
+---
+title: "mdx with astro components"
+created_at: 2025-09-22
+description: "examples of using custom astro components in mdx"
+---
+
+import InfoBox from '../../components/InfoBox.astro';
+
+## using custom components
+
+mdx allows you to import and use astro components directly in your content. here are some examples:
+
+<InfoBox type="info" title="information">
+this is an info box component. you can use it to highlight important information in your posts.
+</InfoBox>
+
+<InfoBox type="warning" title="be careful">
+this is a warning box. use it to alert readers about potential issues or important considerations.
+</InfoBox>
+
+<InfoBox type="success" title="great job">
+this is a success box. perfect for celebrating achievements or confirming successful operations.
+</InfoBox>
+
+<InfoBox type="error" title="something went wrong">
+this is an error box. use it to highlight problems or failures that need attention.
+</InfoBox>
+
+## components without titles
+
+you can also use components without titles for simpler callouts:
+
+<InfoBox type="info">
+just some additional information without a specific title.
+</InfoBox>
+
+<InfoBox type="warning">
+a simple warning without a title header.
+</InfoBox>
+
+## mixing components with markdown
+
+components can be seamlessly mixed with regular markdown content:
+
+here's a regular paragraph followed by a component:
+
+<InfoBox type="success" title="pro tip">
+you can write **markdown** inside components too! this includes:
+
+- bullet points
+- 
+- [links](https://astro.build)
+
+and even code blocks:
+
+```javascript
+console.log("hello from inside a component");
+```
+</InfoBox>
+
+and here's more regular content after the component.
+
+## component composition
+
+you can create rich content experiences by combining multiple components:
+
+<InfoBox type="info" title="getting started">
+first, make sure you have all dependencies installed.
+</InfoBox>
+
+<InfoBox type="warning" title="compatibility note">  
+this feature requires astro v5.0 or higher.
+</InfoBox>
+
+<InfoBox type="success" title="you're ready">
+everything is set up correctly! you can now start using these components in your posts.
+</InfoBox>
+
+## technical implementation
+
+the InfoBox component demonstrates several astro features:
+
+1. **typescript props interface** - defining component props with types
+2. **conditional rendering** - showing titles only when provided  
+3. **dynamic classes** - applying different styles based on props
+4. **slots** - allowing content to be passed into the component
+5. **template expressions** - using javascript in the template
+
+this makes mdx a powerful authoring format for technical documentation and rich content experiences.

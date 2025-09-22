@@ -1,0 +1,40 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'success' | 'error';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const typeStyles = {
+  info: 'border-blue-200 bg-blue-50 text-blue-800',
+  warning: 'border-yellow-200 bg-yellow-50 text-yellow-800', 
+  success: 'border-green-200 bg-green-50 text-green-800',
+  error: 'border-red-200 bg-red-50 text-red-800'
+};
+
+const iconMap = {
+  info: 'ℹ️',
+  warning: '⚠️', 
+  success: '✅',
+  error: '❌'
+};
+---
+
+<div class={`border-l-4 p-4 rounded-r-lg ${typeStyles[type]}`}>
+  <div class="flex items-start">
+    <span class="text-lg mr-3 flex-shrink-0">
+      {iconMap[type]}
+    </span>
+    <div class="flex-1">
+      {title && (
+        <h4 class="font-medium mb-2 text-current">
+          {title}
+        </h4>
+      )}
+      <div class="text-sm">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>

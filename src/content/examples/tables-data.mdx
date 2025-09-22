@@ -1,0 +1,69 @@
+---
+title: "tables and structured data"
+created_at: 2025-09-22
+description: "examples of markdown tables and data presentation"
+---
+
+## basic tables
+
+| technology | type | year |
+|------------|------|------|
+| html | markup | 1993 |
+| css | styling | 1996 |
+| javascript | programming | 1995 |
+| typescript | programming | 2012 |
+
+## aligned tables
+
+| left aligned | center aligned | right aligned |
+|:-------------|:--------------:|--------------:|
+| content | content | content |
+| more content | more content | more content |
+| even more | even more | even more |
+
+## complex table example
+
+| framework | language | features | popularity |
+|-----------|----------|----------|------------|
+| astro | js/ts | ssr, islands, zero-js by default | ⭐⭐⭐⭐ |
+| next.js | js/ts | ssr, ssg, app router | ⭐⭐⭐⭐⭐ |
+| nuxt | js/ts | ssr, ssg, vue ecosystem | ⭐⭐⭐⭐ |
+| svelte | js/ts | compiled, reactive | ⭐⭐⭐⭐ |
+| solid | js/ts | fine-grained reactivity | ⭐⭐⭐ |
+
+## performance comparison
+
+| metric | astro | next.js | gatsby |
+|--------|-------|---------|--------|
+| build time | 2.3s | 8.7s | 12.1s |
+| bundle size | 45kb | 128kb | 89kb |
+| lighthouse score | 98 | 87 | 91 |
+| first contentful paint | 0.8s | 1.2s | 1.0s |
+
+## configuration options
+
+| option | type | default | description |
+|--------|------|---------|-------------|
+| `output` | string | "static" | build output mode |
+| `site` | string | undefined | deployed site url |
+| `base` | string | "/" | base path for deployment |
+| `trailingSlash` | string | "ignore" | trailing slash behavior |
+| `build.assets` | string | "_astro" | asset directory name |
+
+## package versions
+
+| package | current | latest | status |
+|---------|---------|--------|--------|
+| @astrojs/mdx | 4.3.6 | 4.3.6 | ✅ up to date |
+| @astrojs/tailwind | 6.0.2 | 6.0.2 | ✅ up to date |  
+| tailwindcss | 3.4.17 | 4.1.13 | ⚠️ major update available |
+| astro | 5.13.10 | 5.13.10 | ✅ up to date |
+
+## empty cells and formatting
+
+| name | value | notes |
+|------|-------|-------|
+| setting a |  | not configured |
+| setting b | true | enabled |
+| setting c | false |  |
+| setting d | "auto" | default behavior |
